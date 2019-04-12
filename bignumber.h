@@ -6,7 +6,6 @@
 #define UNIT_VAL 100000000
 #define UNIT_LEN 8
 class BigNumber {
-    // 请补写出以下函数
     public:
         BigNumber();
         BigNumber(const std::string& str);
@@ -17,7 +16,21 @@ class BigNumber {
         BigNumber operator /(const BigNumber& a);
         bool operator <(const BigNumber& a);
         bool operator ==(const BigNumber& a);
+        bool isanum() const;
         friend std::ostream& operator<<(std::ostream& os, const BigNumber& a);
+
+    private:
+        static void _add(const BigNumber& a, const BigNumber& b, BigNumber& res);// a + b, a, b same sig
+        static void _sub(const BigNumber& a, const BigNumber& b, BigNumber& res);// a - b, abs(a) >= abs(b)
+        static void _mul(const BigNumber& a, int b, BigNumber& res);
+        static void _div(const BigNumber& a, int b, BigNumber& res);
+        void _shiftup8();
+        void _shiftdown8();
+        void _remove_padding();
+        std::vector<int> integer;
+        long intLen;
+        bool negative;
+        bool isValid;
 };
 
 #endif

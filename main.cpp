@@ -8,7 +8,7 @@
 #include <unistd.h>
 using namespace std;
 
-int main() {
+static int main_0() {
     string inputFileName = "TestNumber.txt";
     string outputFileName = "TestOut.txt";
 
@@ -45,4 +45,30 @@ int main() {
     inFile.close();
     cout<<"Total time: "<<totalTime<<endl<<"Case count: "<<totalCount<<endl<<"Average time: "<<totalTime/totalCount<<endl;
     return 0;
+}
+
+static int main_1() {
+    string input0, input1, cacu;
+    while(cin>>input0>>cacu>>input1) {
+        BigNumber num0(input0);
+        BigNumber num1(input1);
+        BigNumber result;
+        switch(cacu[0]) {
+            case '+': result = num0 + num1;
+                      break;
+            case '-': result = num0 - num1;
+                      break;
+            case '*': result = num0 * num1;
+                      break;
+            case '/': result = num0 / num1;
+                      break;
+            default:cout<<"Wrong cacu!!"<<endl;
+        }
+        cout << num0<<" "<<cacu<<" " << num1<<" = "<<result<<endl;
+    }
+    return 0;
+}
+
+int main() {
+    return main_1();
 }
